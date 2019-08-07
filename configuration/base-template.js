@@ -1,8 +1,6 @@
 /**
  * Type: Configuration
  * Description: A library that contains a key-value object to be used as constants.
- * @param {CbServer.BasicReq} req
- * @param {CbServer.Resp} resp
  */
 const CONFIG = {
     KEYS:{
