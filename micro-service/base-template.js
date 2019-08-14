@@ -1,19 +1,15 @@
 /**
- * Mention the <platform version> parameterized, that serves as a info on when this Code template was used
- */
-
- /**
- * REQ
- */
-
-/**
- * RESP (success and error, should mention their respective jsdocs that they are code exits)
- */ 
-
- /** 
- * Just for reference here, shouldn't be part of the template
- * Description: A shortlived microservice which is expected to complete under fixed period of time.
- * 
+ * Type: Micro Service
+ * Description: A short-lived service which is expected to complete within a fixed period of time.
+ * @param {CbServer.BasicReq} req
+ * @param {string} req.systemKey
+ * @param {string} req.systemSecret
+ * @param {string} req.userEmail
+ * @param {string} req.userid
+ * @param {string} req.userToken
+ * @param {boolean} req.isLogging
+ * @param {[id: string]} req.params
+ * @param {CbServer.Resp} resp
  */
 
 function ServiceName(req,resp){

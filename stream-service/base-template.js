@@ -1,18 +1,15 @@
 /**
- * Mention the <platform version> parameterized, that serves as a info on when this Code template was used
- */
-
-/**
- * REQ
- */
-
-/**
- * RESP (success and error, mention how resp.success and resp.error behave differently in Stream Services)
- */
-
-/** 
- * Just for reference here, shouldn't be part of the template
- * Description: Allows for infinite execution of logic, parallelly.
+ * Type: Stream Service
+ * Description: A service that does not have an execution timeout which allows for infinite execution of logic.
+ * @param {CbServer.BasicReq} req
+ * @param {string} req.systemKey
+ * @param {string} req.systemSecret
+ * @param {string} req.userEmail
+ * @param {string} req.userid
+ * @param {string} req.userToken
+ * @param {boolean} req.isLogging
+ * @param {[id: string]} req.params
+ * @param {CbServer.Resp} resp
  */
 
 function StreamServiceName(req, resp) {
