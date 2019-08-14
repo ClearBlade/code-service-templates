@@ -2,6 +2,13 @@
  * Type: Stream Service
  * Description: A service that does not have an execution timeout which allows for infinite execution of logic.
  * @param {CbServer.BasicReq} req
+ * @param {string} req.systemKey
+ * @param {string} req.systemSecret
+ * @param {string} req.userEmail
+ * @param {string} req.userid
+ * @param {string} req.userToken
+ * @param {boolean} req.isLogging
+ * @param {[id: string]} req.params
  * @param {CbServer.Resp} resp
  */
 
