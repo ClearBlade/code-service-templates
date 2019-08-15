@@ -13,5 +13,4 @@ const CONFIG = {
         SENDGRID_BASE_URL: "api.sendgrid.com"
     },
     CONSTANTS:{}
-    //
 };
