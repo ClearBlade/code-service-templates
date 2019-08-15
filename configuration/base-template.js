@@ -14,5 +14,4 @@ const CONFIG = {
     },
     CONSTANTS:{}
     //
-}; // Missing this \n causes failures sometimes
-
+};
