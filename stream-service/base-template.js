@@ -12,37 +12,27 @@
  * @param {CbServer.Resp} resp
  */
 
-function StreamServiceName(req, resp) {
-  ClearBlade.init({ request: req });
-  var messaging = ClearBlade.Messaging();
+function TestStream(req, resp) {
+  
+  const client = new MQTT.Client();
   const TOPIC = "hello";
-  messaging.subscribe(TOPIC, WaitLoop);
 
-  function WaitLoop(err, data) {
-
-    if (err) {
-      // DEBUG MESSAGE
-      messaging.publish("error", "Subscribe failed: " + data);
-      resp.error(data);
-    }
-    // DEBUG MESSAGE
-    messaging.publish("success", "Subscribed to Shared Topic. Starting Loop.");
-
-    while (true) {
-      messaging.waitForMessage([TOPIC], function(err, msg, topic) {
-        if (err) {
-          // DEBUG MESSAGE
-          messaging.publish("error", "Failed to wait for message: " + err + " " + msg + "  " + topic);
-          resp.error("Failed to wait for message: " + err + " " + msg + "    " + topic);
-        } 
-        processMessage(msg, topic);
-      });
-    }
-  }
+  client.subscribe(TOPIC, function (topic, message) {
+    console.log("received message on topic " + topic + ": " + message.payload)
+    processMessage(message, topic);
+  })
+    .catch(function (reason) {
+      resp.error("failed to subscribe: " + reason.message)
+    });
 
   function processMessage(msg, topic) {
     // DEBUG MESSAGE
-    messaging.publish("processedmessage", "Received message " +msg+ " "+ topic);
+    client.publish("processedmessage", "Received message " + msg.payload + " " + topic)
+      .then(function () {
+        console.log("successfully published message");
+      }, function (reason) {
+        console.error("failed to publish message : " + reason.message);
+      });
     // Examples of process message tasks:
     // - Storing message in a collection: https://github.com/ClearBlade/native-libraries/blob/master/clearblade.md#collectioncreatenewitem-callback
     // - Process and publish to another topic: https://github.com/ClearBlade/native-libraries/blob/master/clearblade.md#messagepublishtopic-payload
