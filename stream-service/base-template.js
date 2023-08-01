@@ -12,7 +12,7 @@
  * @param {CbServer.Resp} resp
  */
 
-function TestStream(req, resp) {
+function StreamServiceName(req, resp) {
   
   const client = new MQTT.Client();
   const TOPIC = "hello";
